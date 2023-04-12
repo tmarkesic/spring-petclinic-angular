@@ -4,7 +4,6 @@ ARG NODE_VERSION="16.3-alpine"
 
 FROM $DOCKER_HUB/library/node:$NODE_VERSION as build
 
-
 COPY . /workspace/
 
 ARG NPM_REGISTRY=" https://registry.npmjs.org"
@@ -29,5 +28,3 @@ EXPOSE 8080
 USER nginx
 
 HEALTHCHECK     CMD     [ "service", "nginx", "status" ]
-
-
