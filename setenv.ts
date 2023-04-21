@@ -8,9 +8,11 @@ const envExist = fs.existsSync('.env');
 if (!envExist) { 
    console.log('.env file not found, using default values...');
    process.env.REST_API_URL = 'https://localhost:9966/petclinic/api/';
-   process.env.SPRING_DATASOURCE_URL = 'jdbc:postgresql://localhost:5432/petclinic';
-   process.env.SPRING_DATASOURCE_USERNAME = 'username';
-   process.env.SPRING_DATASOURCE_PASSWORD = 'password';
+}
+
+if (!process.env.REST_API_URL) {
+   console.log('REST_API_URL not defined in .env file, using default value...');
+   process.env.REST_API_URL = 'https://localhost:9966/petclinic/api/';
 }
 
 // read environment variables from .env file
@@ -30,9 +32,6 @@ const environmentFileContent = `
 export const environment = {
    production: ${isProduction},
    REST_API_URL: "${process.env.REST_API_URL}",
-   SPRING_DATASOURCE_URL: "${process.env.SPRING_DATASOURCE_URL}",
-   SPRING_DATASOURCE_USERNAME: "${process.env.SPRING_DATASOURCE_USERNAME}",
-   SPRING_DATASOURCE_PASSWORD: "${process.env.SPRING_DATASOURCE_PASSWORD}"
    };
 `;
 
