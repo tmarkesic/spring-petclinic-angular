@@ -15,11 +15,3 @@ FROM nginx:1.17.6-alpine
 COPY --from=build /build/dist/. /usr/share/nginx/html
 
 EXPOSE 80
-
-#FROM nginx:1.17.6-alpine
-
-#COPY --from=build /build/dist 
-#/usr/share/nginx/html
-
-#EXPOSE 8080
-
