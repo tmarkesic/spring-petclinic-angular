@@ -10,13 +10,14 @@ if (!envExist) {
    process.env.REST_API_URL = 'https://localhost:9966/petclinic/api/';
 }
 
+// read environment variables from .env file
+require('dotenv').config({override: true});
+
 if (!process.env.REST_API_URL) {
    console.log('REST_API_URL not defined in .env file, using default value...');
    process.env.REST_API_URL = 'https://localhost:9966/petclinic/api/';
 }
 
-// read environment variables from .env file
-require('dotenv').config({override: true});
 
 // read the command line arguments passed with yargs
 const environment = argv.environment;
